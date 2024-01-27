@@ -9,29 +9,25 @@ export default function App() {
 
   const guestFirstName = (event) => {
     setFirstName(event.target.value);
+    console.log(firstName);
   };
 
   const guestLastName = (event) => {
     setLastName(event.target.value);
   };
-  const currentGuestList = guestList;
 
-  const handleFormSubmission = () => {
+  const handleFormSubmission = (event) => {
     const newGuest = {
       id: idCounter,
       firstName: firstName,
       lastName: lastName,
     };
     setGuestList([...guestList, newGuest]);
+    setIdCounter(idCounter + 1);
     setFirstName('');
     setLastName('');
-    setIdCounter(idCounter + 1);
-  };
-
-  const pressEnter = (event) => {
-    if (event.key === 'Enter') {
-      handleFormSubmission();
-    }
+    console.log(firstName, lastName);
+    event.target.reset();
   };
 
   return (
@@ -39,7 +35,7 @@ export default function App() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          handleFormSubmission();
+          handleFormSubmission(event);
         }}
       >
         <h1>Guest List</h1>
@@ -47,12 +43,13 @@ export default function App() {
           label="First Name"
           htmlFor="first-name"
           onChange={guestFirstName}
+          value={firstName}
         />
         <InputField
           label="Last Name"
           htmlFor="last-name"
           onChange={guestLastName}
-          onKeyDown={pressEnter}
+          value={lastName}
         />
         <button>Add Guest</button>
       </form>
