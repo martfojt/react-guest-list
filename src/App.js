@@ -6,15 +6,42 @@ export default function App() {
   const [lastName, setLastName] = useState('');
   const [guestList, setGuestList] = useState([]);
 
-  const test = (event) => {
-    setFirstName;
+  const guestFirstName = (event) => {
+    setFirstName(event.target.value);
+  };
+
+  const guestLastName = (event) => {
+    setLastName(event.target.value);
+  };
+
+  const handleFormSubmission = () => {
+    const userFirstName = firstName;
+    const userLastName = lastName;
   };
 
   return (
     <div>
-      <h1>Guest List</h1>
-      <InputField label="First Name" htmlFor="first-name" />
-      <InputField label="Last Name" htmlFor="last-name" />
+      <div>
+        <h1>Guest List</h1>
+        <InputField
+          label="First Name"
+          htmlFor="first-name"
+          onChange={guestFirstName}
+        />
+        <InputField
+          label="Last Name"
+          htmlFor="last-name"
+          onChange={guestLastName}
+        />
+      </div>
+
+      <div>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        />
+      </div>
     </div>
   );
 }

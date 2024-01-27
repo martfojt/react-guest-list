@@ -1,8 +1,8 @@
-export function InputField({ changeLabel, onChange }) {
+export function InputField({ htmlFor, label, onChange }) {
   return (
     <div>
-      <label htmlFor={changeLabel.HtmlFor}>{changeLabel.label}</label>
-      <input />
+      <label htmlFor={htmlFor}>{label}</label>
+      <input onChange={onChange} />
     </div>
   );
 }
