@@ -7,17 +7,15 @@ export default function App() {
   const [lastName, setLastName] = useState('');
   const [guestList, setGuestList] = useState([]);
   const [idCounter, setIdCounter] = useState(1);
-
   const guestFirstName = (event) => {
     setFirstName(event.target.value);
     console.log(firstName);
   };
-
   const guestLastName = (event) => {
     setLastName(event.target.value);
   };
-
   const handleFormSubmission = (event) => {
+    event.preventDefault();
     const newGuest = {
       id: idCounter,
       firstName: firstName,
@@ -30,7 +28,6 @@ export default function App() {
     console.log(firstName, lastName);
     event.target.reset();
   };
-
   return (
     <div>
       <form
@@ -52,17 +49,9 @@ export default function App() {
           onChange={guestLastName}
           value={lastName}
         />
+        <button style={{ display: 'none' }}>Add Guest</button>
       </form>
 
-      <div>
-        <ul>
-          {guestList.map((guest) => (
-            <li key={guest.id}>
-              {`Guest ${guest.id}: ${guest.firstName} ${guest.lastName}`}
-            </li>
-          ))}
-        </ul>
-      </div>
       <GuestListTable guestList={guestList} />
     </div>
   );
