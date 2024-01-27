@@ -13,15 +13,26 @@ export default function App() {
   const guestLastName = (event) => {
     setLastName(event.target.value);
   };
+  const currentGuestList = guestList;
 
   const handleFormSubmission = () => {
-    const userFirstName = firstName;
-    const userLastName = lastName;
+    const newGuest = {
+      firstName: firstName,
+      lastName: lastName,
+    };
+    setGuestList([...currentGuestList, newGuest]);
+    setFirstName('');
+    setLastName('');
   };
 
   return (
     <div>
-      <div>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleFormSubmission();
+        }}
+      >
         <h1>Guest List</h1>
         <InputField
           label="First Name"
@@ -33,15 +44,8 @@ export default function App() {
           htmlFor="last-name"
           onChange={guestLastName}
         />
-      </div>
-
-      <div>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-          }}
-        />
-      </div>
+        <button>Add Guest</button>
+      </form>
     </div>
   );
 }
