@@ -52,7 +52,6 @@ export default function App() {
           onChange={guestLastName}
           value={lastName}
         />
-        <button>Add Guest</button>
       </form>
 
       <div>
