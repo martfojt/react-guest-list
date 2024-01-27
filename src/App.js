@@ -1,5 +1,6 @@
+import './styles.css';
 import { useState } from 'react';
-import { InputField } from './components';
+import { GuestListTable, InputField } from './components';
 
 export default function App() {
   const [firstName, setFirstName] = useState('');
@@ -63,6 +64,7 @@ export default function App() {
           ))}
         </ul>
       </div>
+      <GuestListTable guestList={guestList} />
     </div>
   );
 }
