@@ -37,6 +37,15 @@ export default function App() {
     event.target.reset(); // Reset form fields
   };
 
+  //   async function addGuest () {const response = await fetch(`http://localhost:4000/guests`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({ firstName: firstName, lastName: lastName }),
+  // });
+  // const createdGuest = await response.json();}
+
   // Attending status checkbox toggle
   const attendChange = (guestId) => {
     const updatedGuestList = guestList.map((guest) => {
