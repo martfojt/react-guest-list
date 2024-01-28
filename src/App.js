@@ -8,6 +8,7 @@ export default function App() {
   const [lastName, setLastName] = useState('');
   const [guestList, setGuestList] = useState([]);
   const [idCounter, setIdCounter] = useState(1);
+  const baseUrl = 'http://localhost:4000';
 
   // First name input update
   const guestFirstName = (event) => {
