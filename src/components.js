@@ -7,7 +7,7 @@ export function InputField({ htmlFor, label, onChange, value }) {
   );
 }
 
-export function GuestListTable({ guestList, onAttendChange }) {
+export function GuestListTable({ guestList, onAttendChange, onRemoveGuest }) {
   return (
     <table>
       <thead>
@@ -35,7 +35,9 @@ export function GuestListTable({ guestList, onAttendChange }) {
               {guest.attending ? ' Yes' : ' No'}
             </td>
             <td>
-              <button type="button">Remove guest</button>
+              <button type="button" onClick={() => onRemoveGuest(guest.id)}>
+                Remove guest
+              </button>
             </td>
           </tr>
         ))}

@@ -39,6 +39,14 @@ export default function App() {
 
     setGuestList(updatedGuestList);
   };
+
+  const removeGuest = (guestId) => {
+    const updatedGuestList = guestList.filter((guest) => {
+      return guest.id !== guestId;
+    });
+
+    setGuestList(updatedGuestList);
+  };
   return (
     <div>
       <form
@@ -63,7 +71,11 @@ export default function App() {
         <button style={{ display: 'none' }}>Add Guest</button>
       </form>
 
-      <GuestListTable guestList={guestList} onAttendChange={attendChange} />
+      <GuestListTable
+        guestList={guestList}
+        onAttendChange={attendChange}
+        onRemoveGuest={removeGuest}
+      />
     </div>
   );
 }
