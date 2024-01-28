@@ -19,7 +19,7 @@ export function GuestListTable({ guestList, onAttendChange, onRemoveGuest }) {
           <th>Remove</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody data-test-id="guest">
         {guestList.map((guest) => (
           <tr key="guest.id">
             <td>{guest.id}</td>
