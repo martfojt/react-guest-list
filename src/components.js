@@ -7,7 +7,7 @@ export function InputField({ htmlFor, label, onChange, value }) {
   );
 }
 
-export function GuestListTable({ guestList }) {
+export function GuestListTable({ guestList, onAttendChange }) {
   return (
     <table>
       <thead>
@@ -21,12 +21,18 @@ export function GuestListTable({ guestList }) {
       </thead>
       <tbody>
         {guestList.map((guest) => (
-          <tr key={guest.id}>
+          <tr key="guest.id">
             <td>{guest.id}</td>
             <td>{guest.firstName}</td>
             <td>{guest.lastName}</td>
             <td>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={guest.attending}
+                onChange={() => onAttendChange(guest.id)}
+                aria-label={`${guest.firstName} ${guest.lastName} attending status`}
+              />
+              {guest.attending ? ' Yes' : ' No'}
             </td>
             <td>
               <button type="button">Remove guest</button>

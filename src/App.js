@@ -20,6 +20,7 @@ export default function App() {
       id: idCounter,
       firstName: firstName,
       lastName: lastName,
+      attending: false,
     };
     setGuestList([...guestList, newGuest]);
     setIdCounter(idCounter + 1);
@@ -27,6 +28,16 @@ export default function App() {
     setLastName('');
     console.log(firstName, lastName);
     event.target.reset();
+  };
+  const attendChange = (guestId) => {
+    const updatedGuestList = guestList.map((guest) => {
+      if (guest.id === guestId) {
+        return { ...guest, attending: !guest.attending };
+      }
+      return guest;
+    });
+
+    setGuestList(updatedGuestList);
   };
   return (
     <div>
@@ -52,7 +63,7 @@ export default function App() {
         <button style={{ display: 'none' }}>Add Guest</button>
       </form>
 
-      <GuestListTable guestList={guestList} />
+      <GuestListTable guestList={guestList} onAttendChange={attendChange} />
     </div>
   );
 }
