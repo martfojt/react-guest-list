@@ -3,17 +3,24 @@ import { useState } from 'react';
 import { GuestListTable, InputField } from './components';
 
 export default function App() {
+  // State variables for guest list
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [guestList, setGuestList] = useState([]);
   const [idCounter, setIdCounter] = useState(1);
+
+  // First name input update
   const guestFirstName = (event) => {
     setFirstName(event.target.value);
-    console.log(firstName);
+    // console.log(firstName);
   };
+
+  // Last name input update
   const guestLastName = (event) => {
     setLastName(event.target.value);
   };
+
+  // Handle form submission
   const handleFormSubmission = (event) => {
     event.preventDefault();
     const newGuest = {
@@ -22,13 +29,15 @@ export default function App() {
       lastName: lastName,
       attending: false,
     };
-    setGuestList([...guestList, newGuest]);
-    setIdCounter(idCounter + 1);
-    setFirstName('');
-    setLastName('');
-    console.log(firstName, lastName);
-    event.target.reset();
+    setGuestList([...guestList, newGuest]); // Add new guest to list
+    setIdCounter(idCounter + 1); // Increment ID counter
+    setFirstName(''); // Reset first name
+    setLastName(''); // Reset last name
+    console.log(firstName, lastName); // Log names
+    event.target.reset(); // Reset form fields
   };
+
+  // Attending status checkbox toggle
   const attendChange = (guestId) => {
     const updatedGuestList = guestList.map((guest) => {
       if (guest.id === guestId) {
@@ -40,6 +49,7 @@ export default function App() {
     setGuestList(updatedGuestList);
   };
 
+  // Remove guest from guest list
   const removeGuest = (guestId) => {
     const updatedGuestList = guestList.filter((guest) => {
       return guest.id !== guestId;
