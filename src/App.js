@@ -30,10 +30,10 @@ export default function App() {
       attending: false,
     };
     setGuestList([...guestList, newGuest]); // Add new guest to list
-    setIdCounter(idCounter + 1); // Increment ID counter
+    setIdCounter(idCounter + 1); // ID counter
     setFirstName(''); // Reset first name
     setLastName(''); // Reset last name
-    console.log(firstName, lastName); // Log names
+    // console.log(firstName, lastName);
     event.target.reset(); // Reset form fields
   };
 
