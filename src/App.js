@@ -10,6 +10,9 @@ export default function App() {
   const [idCounter, setIdCounter] = useState(1);
   const baseUrl = 'http://localhost:4000';
 
+  //   const response = await fetch(`${baseUrl}/guests`);
+  // const allGuests = await response.json();
+
   // First name input update
   const guestFirstName = (event) => {
     setFirstName(event.target.value);
